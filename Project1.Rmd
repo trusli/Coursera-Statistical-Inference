@@ -28,9 +28,11 @@ sampleMean <- data.frame(
 simMean <- mean(sampleMean$x)
 trueMean <- 1/lambda
 
+simSD <- sd(sampleMean$x)
+
 ```
 
-The simulation resulted in a sample mean of `r simMean` and theoratical mean is `r trueMean`. 
+The simulation resulted in a sample mean of `r simMean` and theoretical mean is `r trueMean`.  They are very close to each other, less than one standard deviation (`r simSD`)
 
 
 2. Show how variable the sample is (via variance) and compare it to the theoretical variance of the distribution.
@@ -41,7 +43,7 @@ simVar <- var(sampleMean$x)
 trueVar <- ((1/lambda)/sqrt(n))^2
 ```
 
-The simulation resulted in a sample mean of `r simVar` and theoratical mean is `r trueVar`. 
+The simulation resulted in a sample mean of `r simVar` and theoratical mean is `r trueVar`. Again, very close. 
 
 
 3. Show that the distribution is approximately normal.
@@ -52,5 +54,5 @@ ggplot(data = sampleMean, aes(x = x)) +
     stat_function(fun = dnorm, arg = list(mean = trueMean, sd = sd(sampleMean$x)))
 ```
 
-The plot compares the distribution of the means from the simulation against a normal distribution.  We can conclude that the Central Limit Theorem applies on exponential distribution
+The plot compares the distribution of the means from the simulation against a normal distribution.  We can conclude that the Central Limit Theorem applies to exponential distribution
 
